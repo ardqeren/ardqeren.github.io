@@ -31,16 +31,28 @@
             line-height: 1.6;
         }
 
-        /* Scroll Animations */
-        .hidden {
+        /* --- YENİ: Gelişmiş Scroll Animasyon Sınıfları --- */
+        .hidden-left {
             opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease-out;
+            transform: translateX(-100px);
+            transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        
+        .hidden-right {
+            opacity: 0;
+            transform: translateX(100px);
+            transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .hidden-up {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
         }
         
         .show {
             opacity: 1;
-            transform: translateY(0);
+            transform: translate(0, 0);
         }
 
         /* Layout */
@@ -61,7 +73,7 @@
         h2 {
             font-size: 2.5rem;
             color: #fff;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
             text-align: center;
             position: relative;
         }
@@ -109,7 +121,7 @@
         .social-links a {
             color: var(--text-color);
             font-size: 1.8rem;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -124,8 +136,8 @@
         .social-links a:hover {
             color: #fff;
             background: var(--accent-color);
-            box-shadow: 0 0 15px var(--accent-glow);
-            transform: translateY(-5px);
+            box-shadow: 0 0 20px var(--accent-glow);
+            transform: translateY(-8px) scale(1.1);
         }
 
         /* About Section */
@@ -141,12 +153,13 @@
             border-radius: 15px;
             border: 1px solid rgba(255,255,255,0.05);
             backdrop-filter: blur(10px);
-            transition: transform 0.3s ease;
+            transition: all 0.4s ease;
         }
 
         .about-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(99, 102, 241, 0.3);
+            transform: translateY(-10px);
+            border-color: rgba(99, 102, 241, 0.5);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
         .about-card i {
@@ -155,45 +168,86 @@
             margin-bottom: 15px;
         }
 
-        /* Tech Stack */
+        /* --- YENİ: Tech Stack Arkadan Belirme Efektleri --- */
         .tech-grid {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 20px;
+            gap: 40px;
+            margin-top: 30px;
         }
 
+        /* Ana kartın çerçevesi */
+        .tech-wrapper {
+            position: relative;
+        }
+
+        /* Arkada saklanan emojiler/ikonlar */
+        .tech-pop-icon {
+            position: absolute;
+            font-size: 2.5rem;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            opacity: 0;
+            z-index: 0;
+            transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55); /* Zıplama efekti */
+            pointer-events: none;
+        }
+
+        /* Görünür olan ön kart */
         .tech-card {
             display: flex;
             align-items: center;
             gap: 15px;
-            background: var(--card-bg);
-            padding: 15px 30px;
+            background: var(--bg-color);
+            padding: 15px 35px;
             border-radius: 50px;
-            border: 1px solid rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
             font-size: 1.2rem;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1; /* Pop ikonun önünde durması için */
+            transition: all 0.4s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
 
         .tech-card i {
             font-size: 1.8rem;
+            transition: transform 0.4s ease;
         }
 
-        .tech-card:hover {
-            transform: scale(1.05);
-            background: rgba(99, 102, 241, 0.1);
+        /* Hover Durumları */
+        .tech-wrapper:hover .tech-card {
+            transform: translateY(-5px);
+            background: var(--card-bg);
             border-color: var(--accent-color);
-            box-shadow: 0 0 20px var(--accent-glow);
+            box-shadow: 0 10px 25px var(--accent-glow);
             color: #fff;
         }
+
+        .tech-wrapper:hover .tech-card i {
+            transform: rotate(360deg);
+        }
+
+        /* Hover anında arkadan fırlayan ikonlar */
+        .tech-wrapper:hover .tech-pop-icon {
+            transform: translate(-50%, -130%) scale(1); /* Yukarı zıpla */
+            opacity: 1;
+        }
+        
+        /* İkonlara özel hafif döndürmeler */
+        .tech-wrapper:hover .python-pop { transform: translate(-50%, -130%) scale(1) rotate(-15deg); }
+        .tech-wrapper:hover .csharp-pop { transform: translate(-50%, -130%) scale(1) rotate(15deg); }
+        .tech-wrapper:hover .js-pop { transform: translate(-50%, -130%) scale(1) rotate(-10deg); }
+
     </style>
 </head>
 <body>
 
     <div class="container">
-        <section class="hero hidden">
+        <section class="hero hidden-up">
             <h1>Arda Eren 👋</h1>
             <div class="hero-subtitle">
                 <span id="typewriter"></span>
@@ -207,20 +261,20 @@
             </div>
         </section>
 
-        <section class="hidden">
-            <h2>Hakkımda</h2>
+        <section>
+            <h2 class="hidden-up">Hakkımda</h2>
             <div class="about-grid">
-                <div class="about-card">
+                <div class="about-card hidden-left" style="transition-delay: 100ms;">
                     <i class="fas fa-graduation-cap"></i>
                     <h3>Eğitim</h3>
                     <p>Ankara Medipol Üniversitesi'nde Bilgisayar Programcılığı okuyorum. Geleceğin Bilgisayar Mühendisi olma yolunda DGS çalışmalarıma aralıksız devam ediyorum.</p>
                 </div>
-                <div class="about-card">
+                <div class="about-card hidden-up" style="transition-delay: 300ms;">
                     <i class="fas fa-brain"></i>
                     <h3>Yapay Zeka & Veri Bilimi</h3>
                     <p>Yapay Zeka (AI), Makine Öğrenmesi ve Veri Bilimi (Data Science) alanlarında kendimi sürekli geliştiriyorum. Verilerden anlamlı sonuçlar çıkarmak ve otomasyon süreçleri oluşturmak en büyük tutkum.</p>
                 </div>
-                <div class="about-card">
+                <div class="about-card hidden-right" style="transition-delay: 500ms;">
                     <i class="fas fa-gamepad"></i>
                     <h3>İlgi Alanları</h3>
                     <p>Kod yazmaktan ve yeni algoritmalar öğrenmekten arta kalan zamanlarda RDR2, The Last of Us ve God of War gibi harika atmosfere sahip hikaye odaklı oyunların dünyasında kaybolmayı seviyorum.</p>
@@ -228,21 +282,34 @@
             </div>
         </section>
 
-        <section class="hidden">
-            <h2>Diller ve Teknolojiler</h2>
+        <section>
+            <h2 class="hidden-up">Diller ve Teknolojiler</h2>
             <div class="tech-grid">
-                <div class="tech-card">
-                    <i class="devicon-python-plain colored"></i>
-                    Python
+                
+                <div class="tech-wrapper hidden-left" style="transition-delay: 200ms;">
+                    <span class="tech-pop-icon python-pop">🐍</span>
+                    <div class="tech-card">
+                        <i class="devicon-python-plain colored"></i>
+                        Python
+                    </div>
                 </div>
-                <div class="tech-card">
-                    <i class="devicon-csharp-plain colored"></i>
-                    C#
+
+                <div class="tech-wrapper hidden-up" style="transition-delay: 400ms;">
+                    <span class="tech-pop-icon csharp-pop">⚙️</span>
+                    <div class="tech-card">
+                        <i class="devicon-csharp-plain colored"></i>
+                        C#
+                    </div>
                 </div>
-                <div class="tech-card">
-                    <i class="devicon-javascript-plain colored"></i>
-                    JavaScript
+
+                <div class="tech-wrapper hidden-right" style="transition-delay: 600ms;">
+                    <span class="tech-pop-icon js-pop">⚡</span>
+                    <div class="tech-card">
+                        <i class="devicon-javascript-plain colored"></i>
+                        JavaScript
+                    </div>
                 </div>
+
             </div>
         </section>
     </div>
@@ -281,7 +348,7 @@
             setTimeout(typeWriter, speed);
         });
 
-        // Scroll Animation (Intersection Observer)
+        // Gelişmiş Scroll Animation (Intersection Observer)
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
@@ -289,10 +356,12 @@
                 }
             });
         }, {
-            threshold: 0.1
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px" // Animasyonların ekranın biraz daha ortasında tetiklenmesi için
         });
 
-        const hiddenElements = document.querySelectorAll('.hidden');
+        // Sola, sağa ve yukarıya gizlenmiş tüm elementleri yakala
+        const hiddenElements = document.querySelectorAll('.hidden-left, .hidden-right, .hidden-up');
         hiddenElements.forEach((el) => observer.observe(el));
     </script>
 </body>
