@@ -155,7 +155,7 @@
             margin-bottom: 15px;
         }
 
-        /* Tech Stack (Upgraded) */
+        /* Tech Stack */
         .tech-grid {
             display: flex;
             justify-content: center;
@@ -188,32 +188,6 @@
             box-shadow: 0 0 20px var(--accent-glow);
             color: #fff;
         }
-
-        /* GitHub Stats */
-        .stats-grid {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-        }
-        
-        .stats-grid img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px;
-            transition: transform 0.3s ease;
-        }
-
-        .stats-grid img:hover {
-            transform: scale(1.02);
-        }
-
-        @media (min-width: 768px) {
-            .stats-grid {
-                flex-direction: row;
-                justify-content: center;
-            }
-        }
     </style>
 </head>
 <body>
@@ -239,17 +213,17 @@
                 <div class="about-card">
                     <i class="fas fa-graduation-cap"></i>
                     <h3>Eğitim</h3>
-                    <p>Ankara Medipol Üniversitesi'nde Bilgisayar Programcılığı okuyorum. Geleceğin Bilgisayar Mühendisi olma yolunda DGS çalışmalarıma devam ediyorum.</p>
+                    <p>Ankara Medipol Üniversitesi'nde Bilgisayar Programcılığı okuyorum. Geleceğin Bilgisayar Mühendisi olma yolunda DGS çalışmalarıma aralıksız devam ediyorum.</p>
                 </div>
                 <div class="about-card">
-                    <i class="fas fa-code"></i>
-                    <h3>Tutkum</h3>
-                    <p>Kahveyi koda dönüştürüyor, özellikle Yapay Zeka (AI) ve Makine Öğrenmesi alanlarında geleceği inşa etmeye odaklanıyorum.</p>
+                    <i class="fas fa-brain"></i>
+                    <h3>Yapay Zeka & Veri Bilimi</h3>
+                    <p>Yapay Zeka (AI), Makine Öğrenmesi ve Veri Bilimi (Data Science) alanlarında kendimi sürekli geliştiriyorum. Verilerden anlamlı sonuçlar çıkarmak ve otomasyon süreçleri oluşturmak en büyük tutkum.</p>
                 </div>
                 <div class="about-card">
                     <i class="fas fa-gamepad"></i>
                     <h3>İlgi Alanları</h3>
-                    <p>Kod yazmaktan arta kalan zamanlarda fitness ile ilgileniyor, RDR2, The Last of Us ve God of War gibi hikaye odaklı oyunların dünyasında kaybolmayı seviyorum.</p>
+                    <p>Kod yazmaktan ve yeni algoritmalar öğrenmekten arta kalan zamanlarda RDR2, The Last of Us ve God of War gibi harika atmosfere sahip hikaye odaklı oyunların dünyasında kaybolmayı seviyorum.</p>
                 </div>
             </div>
         </section>
@@ -271,19 +245,11 @@
                 </div>
             </div>
         </section>
-
-        <section class="hidden">
-            <h2>GitHub İstatistikleri</h2>
-            <div class="stats-grid">
-                <img src="https://github-readme-stats.vercel.app/api?username=ardaeren2401&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0D1117" alt="GitHub Stats" />
-                <img src="https://github-readme-streak-stats.herokuapp.com/?user=ardaeren2401&theme=tokyonight&hide_border=true&background=0D1117" alt="GitHub Streak" />
-            </div>
-        </section>
     </div>
 
     <script>
         // Typewriter Effect
-        const textArray = ["Building the future with code 🚀", "Passionate about AI & Machine Learning 🤖"];
+        const textArray = ["Building the future with code 🚀", "Passionate about AI & Data Science 🤖"];
         let textIndex = 0;
         let charIndex = 0;
         const speed = 100;
