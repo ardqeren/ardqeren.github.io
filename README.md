@@ -26,14 +26,13 @@
 
 * 🌍 **Konum:** Türkiye 🇹🇷
 * 🎓 **Eğitim:** Computer Programming
-* 🎯 **Şu anki Odak:** Improving my development skills
-* ⚡ **Eğlenceli Bilgi:** I turn coffee into code ☕ → 💻
+* 🎯 **Şu anki Odak:** Improving my development skill
 
 <br/>
 
 ## 🛠 Diller ve Teknolojiler
 
-<p align="left">
+<p align="middle">
   <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python" />
   <img src="https://img.shields.io/badge/C%23-239120?style=for-the-badge&logo=c-sharp&logoColor=white" alt="C#" />
   <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript" />
